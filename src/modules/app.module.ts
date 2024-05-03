@@ -5,8 +5,6 @@ import { TrimInterceptor } from '../interceptores'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { LogModule } from './log/log.module'
-import { TypeOrmModule } from '@nestjs/typeorm'
-import { LogEntity } from '../entities'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), LogModule],

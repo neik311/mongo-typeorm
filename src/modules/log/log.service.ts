@@ -12,10 +12,10 @@ export class LogService {
   constructor(private repo: LogRepository) {}
   /** Phân trang */
   async pagination(data: PaginationDto) {
-    const whereCon: FindOptionsWhere<LogEntity> = {}
-    if (data.where.projectCode) whereCon.projectCode = Like(`%${data.where.projectCode}%`)
-    if (data.where.projectName) whereCon.projectName = Like(`%${data.where.projectName}%`)
-    if (data.where.username) whereCon.username = Like(`%${data.where.username}%`)
+    const whereCon: any = {}
+    if (data.where.projectCode) whereCon.projectCode = { $regex: data.where.projectCode }
+    if (data.where.projectName) whereCon.projectName = { $regex: data.where.projectName }
+    if (data.where.username) whereCon.username = { $regex: data.where.username }
 
     const res = await this.repo.findAndCount({
       where: whereCon,
