@@ -5,6 +5,7 @@ import { LogCreateDto, LogUpdateDto } from './dto'
 import { LogRepository } from '../../repositories'
 import { FindOptionsWhere, Like } from 'typeorm'
 import { LogEntity } from '../../entities'
+import { ObjectId } from 'mongodb'
 
 @Injectable()
 export class LogService {
@@ -33,7 +34,7 @@ export class LogService {
   }
   /** Cập nhật */
   async updateData(data: LogUpdateDto) {
-    const foundLog = await this.repo.findOne({ where: { _id: data._id as any } })
+    const foundLog = await this.repo.findOne({ where: { _id: new ObjectId(data._id) as any } })
     if (!foundLog) throw new Error(ERROR_NOT_FOUND_DATA)
     foundLog.projectCode = data.projectCode
     foundLog.projectName = data.projectName

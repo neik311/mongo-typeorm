@@ -9,10 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { LogEntity } from '../entities'
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
-    // LogModule,
-  ],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), LogModule],
   controllers: [AppController],
   providers: [
     AppService,

@@ -1,25 +1,25 @@
 import { ObjectId } from 'mongodb'
-import { Column, Entity, ObjectIdColumn, OneToMany } from 'typeorm'
+import { Column, Entity, ObjectIdColumn } from 'typeorm'
 
 /** Khu vực */
 @Entity('log')
 export class LogEntity {
-  @ObjectIdColumn({ name: '_id' })
+  @ObjectIdColumn()
   _id: ObjectId
 
-  @Column()
+  @Column({ type: 'varchar', length: 50 })
   projectCode: string
 
-  @Column()
+  @Column({ type: 'varchar', length: 250 })
   projectName: string
 
-  @Column()
+  @Column({ type: 'varchar', length: 250 })
   username: string
 
-  @Column()
+  @Column({ type: 'text', nullable: true })
   message: string
 
-  @Column()
+  @Column({ type: 'varchar', length: 250 })
   status: string
 
   @Column()
